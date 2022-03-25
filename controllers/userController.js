@@ -23,6 +23,16 @@ class UserController {
 		}
 	}
 	
+	async findById(req, res){
+		try{
+			const user = await this.dao.findById(req.params.ID);
+			res.json(user);
+		}catch(e){
+			res.status(500).json({error: e});
+		}
+	}
+	
+	
 }
 
 module.exports = UserController;

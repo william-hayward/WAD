@@ -32,6 +32,32 @@ class UserDao {
 		});
 	}
 	
+	findById(id){
+		return new Promise((resolve, reject) => {
+			this.con.query(`SELECT * FROM ${this.table} WHERE ID=?`, [id],
+						  (err, results, fields) => {
+				if(err){
+					reject(err);
+				}else{
+					resolve(results.length == 0? null: results[0]);
+				}
+			});
+		});
+	}
+	
+	login(username, password){
+		return new Promise((resolve, reject) => {
+			this.con.query(`SELECT * FROM ${this.table} WHERE username=? AND password=?`, [username, password],
+						  (err, results, fields) => {
+				if(err){
+					reject(err);
+				}else{
+					resolve(results.length == 0? null: results[0]);
+				}
+			});
+		});
+	}
+	
 	
 };
 
