@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel='stylesheet' href='https://unpkg.com/leaflet@1.7.1/dist/leaflet.css'/>
+<script type='text/javascript' src='https://unpkg.com/leaflet@1.7.1/dist/leaflet.js'></script>
+<script type='module' src='index.js'></script>
+</head>
+<body>
+<h1>Hittastic!</h1>
+	<div>
+		<div id="login" style="width:800px; height:100px">
+		<h2>
+		Login:
+	</h2>
+	Username: <input id='Username'/>
+	Password: <input id='Password'/>
+	
+	<input type='button' id='ajaxButton3' value="Login"/>
+	</div>
+		<div>
+			<div id="login2" style="width:800px; height:50px">
+		</div>
+	
+	
+	<br></br>
+	
+	<h2>
+		Search for songs:
+	</h2>
+Artist: <input id='Artist' />
+
+<input type='button' id='ajaxButton' value='Search!' />
+	<br></br>
+		Hometown: <input id='hometown'/>
+		<input type='button' id='ajaxButton2' value='Search Hometown!'/>
+<br />
+	<br>
+<div id='results'></div>
+	<br>
+	<div id='song'>
+		
+	</div>
+	<div id="map1" style="width:800px; height:600px"> </div>
+	<script type='text/javascript' src='mapp.js'></script>
+</body>
+</html>
