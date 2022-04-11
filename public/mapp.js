@@ -66,3 +66,41 @@ document.getElementById('ajaxButton2').addEventListener('click', () => {
 	const hometown = document.getElementById('hometown').value;
 	ajaxSearch(hometown);
 });
+
+document.getElementById('nom').addEventListener('click', () => {
+	const town = document.getElementById("nominatim").value;
+	nominatim(town);
+
+});
+
+
+function nominatim(query){
+	
+	let html = "";
+	let i = 1
+    const response = fetch(`/nominatimSearch/${query}`, 
+    ).then(response => response.json())
+    .then(poss =>{
+		console.log(response);
+        poss.forEach( pos =>{
+		while(i == 1){
+			const lat = pos.lat
+			const lon = pos.lon
+			
+            html += `Lat: ${pos.lat}`;
+			html +=`<br>`
+			html += `Lon: ${pos.lon}`;
+			
+			const pos3 = [lat, lon]
+			map.setView(pos3, 14);
+			const pos3Marker = L.marker(pos3).addTo(map)
+			
+			i += 1
+        }})
+
+        document.getElementById('results').innerHTML = html;
+		
+		
+
+    })
+};

@@ -1,4 +1,5 @@
 const express = require('express');
+const fetch = require('node-fetch');
 const app = express();
 const mysql = require('mysql2');
 const expressSession = require('express-session');
@@ -123,10 +124,23 @@ app.get('/badlogin', (req, res) => {
 	res.status(401).json({error: "The login was invalid"});
 });
 
+app.get('/nominatimSearch/:query', async(req, res) => {
+		const nominatimResponse = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${req.params.query}`, {
+			headers: {             
+				'User-Agent': 'Lab Application',             
+				'Referer': 'https://wadweek-dtbnq.run-eu-central1.goorm.io'         
+			}     
+		});     
 
+		// When piping we need to set the correct content type on our headers
+		res.set({'Content-Type': 'application/json'});     
+		nominatimResponse.body.pipe(res);
+	});
 
     
 app.listen(3000);
+
+
 
 
 

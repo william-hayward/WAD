@@ -99,6 +99,8 @@ document.getElementById('ajaxButton3').addEventListener('click', () => {
 	login(username, password);
 });
 
+
+
 function login(username, password){
 	const user = {
 		username: username,
